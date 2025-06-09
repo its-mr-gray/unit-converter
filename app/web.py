@@ -1,8 +1,13 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, render_template, request
 
 from app.converters import convert_length, convert_temp, convert_weight
 
 app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 
 @app.errorhandler(ValueError)
