@@ -1,3 +1,30 @@
+.converter-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 2em;
+    max-width: 400px;
+    margin: 2em auto;
+}
+
+input, select, button {
+    margin: .5em 0;
+    padding: 0.5em;
+    font-size: 1em;
+}
+
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
 body {
     font-family: sans-serif;
     margin: 2em;

@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Weight Converter{% endblock %} {%
+block content %}
+<div class="converter-card">
+  <h2>Weight Converter</h2>
+  <div>
+    <input type="number" id="value" placeholder="Enter value" min="0" step="any" />
+    <select id="from-unit"></select>
+    <span>to</span>
+    <select id="to-unit"></select>
+    <button id="convert-btn">Convert</button>
+  </div>
+  <div id="result"></div>
+  <script src="{{ url_for('static', filename='js/weightConversion.js') }}"></script>
+</div>
+{% endblock %}

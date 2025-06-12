@@ -1,5 +1,4 @@
 "use strict";
-// list of supported length units
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,20 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const lengthUnits = [
-    "millimeters",
-    "centimeters",
-    "meters",
-    "kilometers",
-    "inches",
-    "feet",
-    "yards",
-    "miles",
+// list of supported weight units
+const weightUnits = [
+    "milligrams",
+    "grams",
+    "kilograms",
+    "ounces",
+    "pounds",
 ];
-function populateDropdowns() {
+function populateWeightDropdowns() {
     const fromSelect = document.getElementById("from-unit");
     const toSelect = document.getElementById("to-unit");
-    lengthUnits.forEach((unit) => {
+    weightUnits.forEach((unit) => {
         const option1 = document.createElement("option");
         option1.value = unit;
         option1.textContent = unit;
@@ -33,11 +30,11 @@ function populateDropdowns() {
         toSelect.appendChild(option2);
     });
     //default selections
-    fromSelect.value = "meters";
-    toSelect.value = "feet";
+    fromSelect.value = "ounces";
+    toSelect.value = "pounds";
 }
 //handle conversion
-function convertLength() {
+function convertWeight() {
     return __awaiter(this, void 0, void 0, function* () {
         const valueInput = document.getElementById("value");
         const fromUnitSelect = document.getElementById("from-unit");
@@ -54,7 +51,7 @@ function convertLength() {
             return;
         }
         try {
-            const response = yield fetch(`/convert/length?val=${encodeURIComponent(value)}&from_unit=${encodeURIComponent(fromUnit)}&to_unit=${encodeURIComponent(toUnit)}`);
+            const response = yield fetch(`/convert/weight?val=${encodeURIComponent(value)}&from_unit=${encodeURIComponent(fromUnit)}&to_unit=${encodeURIComponent(toUnit)}`);
             const data = yield response.json();
             if (response.ok) {
                 resultDiv.textContent = `Result: ${data.result}`;
@@ -70,7 +67,7 @@ function convertLength() {
 }
 //set up event listeners
 window.onload = function () {
-    populateDropdowns();
+    populateWeightDropdowns();
     const convertButton = document.getElementById("convert-btn");
-    convertButton.addEventListener("click", convertLength);
+    convertButton.addEventListener("click", convertWeight);
 };

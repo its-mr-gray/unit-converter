@@ -27,13 +27,9 @@ def convert_temp_route():
     from_unit = request.args.get("from_unit")
     to_unit = request.args.get("to_unit")
 
-    missing = [
-        p
-        for p, v in [("val", val), ("from_unit", from_unit), ("to_unit", to_unit)]
-        if v is None
-    ]
-    if missing:
-        return jsonify({"error": f"Missing parameter: {', '.join(missing)}"}), 400
+    if not all([val, from_unit, to_unit]):
+        return render_template("temp.html", title="Temperature Converter")
+
     try:
         val = float(val)
         result = convert_temp(val=val, from_unit=from_unit, to_unit=to_unit)
@@ -50,13 +46,9 @@ def convert_weight_route():
     from_unit = request.args.get("from_unit")
     to_unit = request.args.get("to_unit")
 
-    missing = [
-        p
-        for p, v in [("val", val), ("from_unit", from_unit), ("to_unit", to_unit)]
-        if v is None
-    ]
-    if missing:
-        return jsonify({"error": f"Missing parameter: {', '.join(missing)}"}), 400
+    if not all([val, from_unit, to_unit]):
+        return render_template("weight.html", title="Weight Converter")
+
     try:
         val = float(val)
         result = convert_weight(val=val, from_unit=from_unit, to_unit=to_unit)
@@ -73,13 +65,9 @@ def convert_length_route():
     from_unit = request.args.get("from_unit")
     to_unit = request.args.get("to_unit")
 
-    missing = [
-        p
-        for p, v in [("val", val), ("from_unit", from_unit), ("to_unit", to_unit)]
-        if v is None
-    ]
-    if missing:
-        return jsonify({"error": f"Missing parameter: {', '.join(missing)}"}), 400
+    if not all([val, from_unit, to_unit]):
+        return render_template("length.html", title="Length Converter")
+
     try:
         val = float(val)
         result = convert_length(val=val, from_unit=from_unit, to_unit=to_unit)

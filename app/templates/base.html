@@ -1,0 +1,20 @@
+<!DOCTYPE >
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Unit Converter{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+  </head>
+
+  <body>
+    <nav>
+      <a href="{{ url_for('convert_length_route') }}">Length</a>
+      <a href="{{ url_for('convert_weight_route') }}">Weight</a>
+      <a href="{{ url_for('convert_temp_route') }}">Temperature</a>
+    </nav>
+    <main>{% block content %}{% endblock %}</main>
+  </body>
+</html>

@@ -11,7 +11,7 @@ const lengthUnits: string[] = [
   "miles",
 ];
 
-function populateDropdowns(): void {
+function populateLengthDropdowns(): void {
   const fromSelect = document.getElementById("from-unit") as HTMLSelectElement;
   const toSelect = document.getElementById("to-unit") as HTMLSelectElement;
   lengthUnits.forEach((unit) => {
@@ -70,7 +70,7 @@ async function convertLength(): Promise<void> {
 
 //set up event listeners
 window.onload = function () {
-  populateDropdowns();
+  populateLengthDropdowns();
   const convertButton = document.getElementById(
     "convert-btn",
   ) as HTMLButtonElement;
